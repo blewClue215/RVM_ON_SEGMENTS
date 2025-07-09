@@ -1,5 +1,5 @@
 @echo off
-call conda activate base
+call conda activate rvm
 
 REM Check if input folder is provided as command line argument
 if "%~1" neq "" (
