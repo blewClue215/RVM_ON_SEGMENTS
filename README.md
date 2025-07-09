@@ -5,8 +5,14 @@ REQUIREMENTS:
 - Windows PC ( This guide is written for a windows user, unfortunately I don't use Linux or MacOS so i can't help you there)
 - CUDA-Capable GPU ( which should be most modern nvidia GPUs)
 
-## 0. Install CUDA Toolkit!
-https://developer.nvidia.com/cuda-toolkit
+## 0. Install latest CUDA Toolkit supported by Pytorch:
+### 0.1 Check out the pytorch website first to see which cuda toolkit is supported:
+https://pytorch.org/get-started/locally/
+![image](https://github.com/user-attachments/assets/d66ff804-7bb1-4cac-b9e6-9b5961b3c310)
+if the latest toolkit is cuda 12.8; then install that:
+https://developer.nvidia.com/cuda-12-8-0-download-archive 
+
+if this changes in the future; do a google search and install the appropriate one!
 
 ## 1. Install Miniconda:
 https://docs.anaconda.com/free/miniconda/index.html
@@ -28,19 +34,18 @@ Move into the repo root folder
 ## 4. Setup the python conda environment that these scripts will use!
 4.1 Open Command Prompt
 - Make sure (base) is not active if it is then: ```conda deactivate ```
-- ```conda create --name rvm python==3.8```
+- ```conda create --name rvm python==3.9``` Currently latest pytorch needs python 3.9 minimum... subject to changes
 - ```conda activate rvm```
 
+
 4.2 Install Pytorch
-- nvcc --version
-- Pytorch needs to be compiled according to the response from the above command (the cuda version)
-  - Cuda 12.1: ```pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121```
-  - Cuda 11.8: ```pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118```
+- To check what's the actual cuda toolkit version you have, run this in the command prompt:
+- ``` nvcc --version ```
+- Use the command you'd have retrieved from that website based on the cuda toolkit version you have:
+https://pytorch.org/get-started/locally/
+- ```pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128```
 
 This installs the core dependency of pytorch that this whole project requires!
-
-Subject to changes based on this:
-https://pytorch.org/get-started/locally/
 
 4.3. Once this is done make sure you're still in the project root folder (/RVM_ON_SEGMENTS)
   - ```pip install -r requirements_inference.txt```
