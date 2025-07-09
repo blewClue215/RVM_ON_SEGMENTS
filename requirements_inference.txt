@@ -1,4 +1,4 @@
-av==8.0.3
-tqdm==4.61.1
-pims==0.5
+av
+tqdm
+pims
 opencv-python
