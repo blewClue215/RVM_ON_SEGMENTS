@@ -5,6 +5,8 @@ import numpy as np
 from torch.utils.data import Dataset
 from torchvision.transforms.functional import to_pil_image
 from PIL import Image
+from fractions import Fraction
+
 
 
 class VideoReader(Dataset):
