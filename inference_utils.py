@@ -33,7 +33,15 @@ class VideoReader(Dataset):
 class VideoWriter:
     def __init__(self, path, frame_rate, bit_rate=1000000):
         self.container = av.open(path, mode='w')
-        self.stream = self.container.add_stream('hevc', rate=Fraction(frame_rate))
+        #Use Fractions for NTSC framerates 
+        if(round(float(frame_rate), 2) == 59.94):
+            fr=Fraction(60000, 1001)
+        elif(round(float(frame_rate), 2) == 29.97):
+            fr=Fraction(30000, 1001)
+        else:
+            fr=Fraction(frame_rate)
+        #self.stream = self.container.add_stream('hevc', rate=Fraction(frame_rate))
+        self.stream = self.container.add_stream('hevc', rate=fr)
         self.stream.pix_fmt = 'yuv420p'
         self.stream.bit_rate = bit_rate
     
